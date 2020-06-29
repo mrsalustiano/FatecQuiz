@@ -1,0 +1,136 @@
+
+                    SQL = "INSERT INTO quiz ( id, questao , resp1, resp2, resp3, resp4, respCerta) "
+                            + "VALUES (11, "
+					        + "'What does PHP stands for ?', "
+					        + "'Post Hypertext Processor', "
+					        + "'Pre Hypertext Processor', "
+					        + "'Hypertext Preprocessor', "
+					        + "'Paper High Processor', "
+					        + "'Pre Hypertext Processor' ) ";               
+                    stmt.executeUpdate(SQL);
+					
+
+      SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
+        + VALUES (41, "
+        + "'How can you show an alert box using JavaScript ?',"
+        + "' frame.alert()',"
+        + "' window.alert()',"
+        + "'warning.alert()',"
+        + "' authenticate.alert()',"
+        + "' window.alert()' )";
+        
+        
+                    stmt.executeUpdate(SQL);
+      
+      SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
+        + VALUES (42, "
+        + "' Which operator can be used to find out the data type of a Javascript variable ?',"
+        + "'varType',"
+        + "'getType',"
+        + "'showType',"
+        + "'typeof',"
+        + "'typeof' )";
+        
+                            stmt.executeUpdate(SQL);
+      		
+      SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
+        + VALUES (43, "
+        + "'What is true about Javascript ?',"
+        + "'Javascript can be used to perform client side validation ?',"
+        + "'Javascript can be used to perform server side validation',"
+        + "'Javascript is an acronym for Java language',"
+        + "'Javascript is an obsolete language that is not used nowadays',"
+        + "'Javascript can be used to perform client side validation ?' )";
+        
+      
+                          stmt.executeUpdate(SQL);
+      		
+      SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
+        + VALUES (44, "
+        + "'What is the relationship between Javascript and jQuery ?',"
+        + "'Javascript is a library of jQuery',"
+        + "'jQuery is a library of Javascript',"
+        + "'jQuery is an abbreviation of Javascript',"
+        + "'jQuery is a database query language',"
+        + "'jQuery is a library of Javascript' )";
+      
+      
+                          stmt.executeUpdate(SQL);
+	  
+	  SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
+	    + VALUES (45, "
+        + "'Which Javascript method can be used to convert a string into a number ?',"
+        + "'parseString()',"
+        + "'parseInt()',"
+        + "'parseNumber()',"
+        + "'parseInteger()',"
+        + "'parseInt()' )";
+      
+      
+                          stmt.executeUpdate(SQL);
+
+     SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
+       + VALUES (46, "
+        + "'Inside which HTML element do we put the JavaScript ?',"
+        + "'script',"
+        + "'javascript',"
+        + "'scripting',"
+        + "'js',"
+        + "'script' )";
+      
+                          stmt.executeUpdate(SQL);
+
+      SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
+        + VALUES (47, "
+        + "'Where is the correct place to insert a JavaScript ?',"
+        + "'head section',"
+        + "'body section',"
+        + "'title section',"
+        + "'both head and body section',"
+        + "'head section' )";
+      
+                          stmt.executeUpdate(SQL);
+
+     SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
+       + VALUES (48, "
+        + "'How can you add a comment in a JavaScript ?',"
+        + "'//This is a comment',"
+        + "'!!This is a comment',"
+        + "'@@This is a comment',"
+        + "'##This is a comment',"
+        + "'//This is a comment' )";
+      
+                          stmt.executeUpdate(SQL);
+
+     SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
+       + VALUES (49, "
+        + "'What is the correct format of JSON ?',"
+        + "'{"employees":[
+    			{"firstName":"John", "lastName":"Doe"}, 
+    			{"firstName":"Anna",	"lastName":"Smith"},
+    			{"firstName":"Peter", "lastName":"Jones"}
+			]}',"
+        + "'{"A","B"}',"
+        + "'[1:"A":"B":2:"C"]',"
+        + "'[1;"A";"B";2;"C"]',"
+       + "'{"employees":[
+    			{"firstName":"John", "lastName":"Doe"}, 
+    			{"firstName":"Anna",	"lastName":"Smith"},
+    			{"firstName":"Peter", "lastName":"Jones"}
+		]}' )";
+                     stmt.executeUpdate(SQL);
+
+     SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
+       + VALUES (50, "
+        + "'Which function can be used to find out if an expression (or a variable) is true:  ?',"
+        + "'checkFalse()',"
+        + "'bool()',"
+        + "'checkTrue()',"
+        + "'Boolean()',"
+        + "'Boolean()' )";
+
+                          stmt.executeUpdate(SQL);
+	  
+	  
+      	
+        
