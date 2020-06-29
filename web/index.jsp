@@ -27,13 +27,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Fatec Quiz</title>
         <%@include file="WEB-INF/jspf/bootstrap.jspf" %>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/menu.jspf" %>
-        <h2>Index</h2>
+
         <div>
             <p>
                 Bem vindo ao <b><u>Fatec Quiz</u></b>, sistema de Quiz.
@@ -43,8 +44,8 @@
         </p>
         <h2>Listagem Geral de Pontuação</h2>
         <br>
-        <table border="1">
-            <thead>
+        <table class="table">
+            <thead class="thead-dark">
             <th>Nome</th>
             <th>Pontuação</th>
             <th>Data </th>
@@ -59,12 +60,15 @@
             <% } %>
             </tbody>
         </table>
-            <br>
+
         <%if (session.getAttribute("user.login") == null) {%>
-        <p>Você precisa estar autenticado para ter acesso ao conteúdo dos quizes do seu usuario.</p>
+        <div class="alert alert-danger" role="alert">
+            Você precisa estar autenticado para ter acesso a pontuacao individual.
+        </div>
         <%} else {%>
-        <a href="ListaUsuario.jsp?login=<%=session.getAttribute("user.login")%>">Listar</a>
-        <%}%>  
+        <a class="btn btn-primary" role="button" href="ListaUsuario.jsp?login=<%=session.getAttribute("user.login")%>">
+            Listar Pontuação do Usuario <%=session.getAttribute("user.login")%> </a>
+            <%}%>  
 
 
         <input type="hidden" name="login" value="<%=session.getAttribute("user.login")%>"/>

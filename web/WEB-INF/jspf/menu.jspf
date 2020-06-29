@@ -3,56 +3,77 @@
 <%@page import="app.User"%>
 <%@ page pageEncoding="UTF-8" %>
 <%
-String errorMessage = null;
-if(request.getParameter("session.login") != null){
-    String login = request.getParameter("user.login");
-    String password = request.getParameter("user.password");
-    try{
-        User user = User.getUser(login, password);
-        if(user == null){
-            errorMessage = "Login/password incorrect";
-        }else{
-            session.setAttribute("user.login", login);
-            session.setAttribute("user.name", user.getName());
-            session.setAttribute("user.role", user.getRole());
-            response.sendRedirect("/FatecQuiz/index.jsp");
+    String errorMessage = null;
+    if (request.getParameter("session.login") != null) {
+        String login = request.getParameter("user.login");
+        String password = request.getParameter("user.password");
+        try {
+            User user = User.getUser(login, password);
+            if (user == null) {
+                errorMessage = "Login/password incorrect";
+            } else {
+                session.setAttribute("user.login", login);
+                session.setAttribute("user.name", user.getName());
+                session.setAttribute("user.role", user.getRole());
+                response.sendRedirect("/FatecQuiz/index.jsp");
+            }
+        } catch (Exception ex) {
+            errorMessage = ex.getMessage();
         }
-    }catch(Exception ex){
-        errorMessage = ex.getMessage();
+    } else if (request.getParameter("session.logout") != null) {
+        session.removeAttribute("user.login");
+        session.removeAttribute("user.name");
+        session.removeAttribute("user.role");
+        response.sendRedirect("/FatecQuiz/index.jsp");
     }
-}else if(request.getParameter("session.logout") != null){
-    session.removeAttribute("user.login");
-    session.removeAttribute("user.name");
-    session.removeAttribute("user.role");
-    response.sendRedirect("/FatecQuiz/index.jsp");
-}
 %>
-<h1>Fatec Quiz</h1>
 
-<%if(session.getAttribute("user.login") == null){%>
-    <form method="post">
-        Usuário: <input type="text" name="user.login" /> &nbsp;&nbsp;&nbsp;
-        Password: <input type="password" name="user.password" />&nbsp;&nbsp;&nbsp;,
-        <input type="submit" name="session.login" value="LogIn &#9660;"/>
-    </form>
-    <%if(errorMessage != null){%>
-    <div style="color:red"><%= errorMessage %></div>
-    <%}%>
-<%}else{%>
-    <form>
-        <a href="<%=request.getContextPath()%>/index.jsp">INÍCIO | </a>
-        <a href="<%= request.getContextPath()%>/quizPage.jsp">Fazer o Quiz |</a>
 
-        <%if(session.getAttribute("user.role").equals("ADMIN")){%>
-        <span >
-          <a href="<%=request.getContextPath()%>/restricted/users.jsp">USUÁRIOS |</a> 
-        </span>
-        <%}%>
-          Bem vindo, <u><a href="<%=request.getContextPath()%>/me.jsp"><%= session.getAttribute("user.name") %></a></u>
-        <input type="submit" name="session.logout" value="LogOut &#9650;" />
-    </form>
+<%if (session.getAttribute("user.login") == null) {%>
+<form method="post">
+    Usuário: <input type="text" name="user.login" /> &nbsp;&nbsp;&nbsp;
+    Password: <input type="password" name="user.password" />&nbsp;&nbsp;&nbsp;
+    <input type="submit" name="session.login" value="LogIn &#9660;"/>
+</form>
+<%if (errorMessage != null) {%>
+<div class="alert alert-danger" role="alert">
+    <%= errorMessage%>
+</div>
 <%}%>
-<%if(DbListener.exceptionMessage != null){%>
-    <h3 style="color:red"><%= DbListener.exceptionMessage %></h3>
+<%} else {%>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/FatecQuiz/index.jsp">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/FatecQuiz/quizPage.jsp">Fazer o Quiz</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<%=request.getContextPath()%>/me.jsp">Bem vindo <%= session.getAttribute("user.name")%></a>
+            </li>
+            <%if (session.getAttribute("user.role").equals("ADMIN")) {%>
+
+            <li class="nav-item"> 
+                <a class="nav-link" href="<%=request.getContextPath()%>/restricted/users.jsp">USUÁRIOS</a> 
+            </li>
+            <%}%>
+        </ul>
+
+    </div>   
+    <form>
+        <input type="submit" name="session.logout" value="Sair &#9650;" />
+    </form>
+</nav>
+
+
+<%}%>
+<%if (DbListener.exceptionMessage != null) {%>
+<h3 style="color:red"><%= DbListener.exceptionMessage%></h3>
 <%}%>
 <hr/>

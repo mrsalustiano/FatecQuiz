@@ -578,8 +578,6 @@ public class DbListener implements ServletContextListener {
 
                 stmt.executeUpdate(SQL);
 
-        
-      
                 SQL = "INSERT INTO quiz (id, questao, resp1, resp2, resp3, resp4, respCerta) "
                         + "VALUES (49, "
                         + "'What gets printed? Assuming python version 2.x ?', "

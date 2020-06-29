@@ -28,9 +28,8 @@ public class Quiz {
     private String respCerta;
 
     public static int buscaResposta(String resposta, int questao) throws Exception {
-        int qtd=0;
-       
-       
+        int qtd = 0;
+
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.URL);
         String SQL = "SELECT count(*) as qtd FROM quiz WHERE id=? AND respCerta=?";
@@ -38,19 +37,16 @@ public class Quiz {
         stmt.setInt(1, questao);
         stmt.setString(2, resposta);
         ResultSet rs = stmt.executeQuery();
-        
-        if (rs.next()){
+
+        if (rs.next()) {
             qtd = rs.getInt("qtd");
         }
-         
-       
+
         rs.close();
         stmt.close();
         con.close();
-              
-        
+
         return qtd;
-     
 
     }
 

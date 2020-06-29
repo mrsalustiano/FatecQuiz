@@ -71,8 +71,8 @@
         <%@include file="WEB-INF/jspf/menu.jspf" %>
         <h1>Quiz</h1>
         <form method="post">
-            <table border="1">
-                <tr>
+            <table class="table">
+                <tr class="thead-dark">
 
                     <th> Questão </th>
                     <th> Resposta  </th>
@@ -87,8 +87,8 @@
                 <tr>
                     <td><%= q.getQuestao()%> </td> 
                     <td>
-                        <label for="resposta<%=qtd%>">Selecione a Resposta :</label>
-                        <select name="respostas<%=qtd%>" id="respostas<%=qtd%>"  >
+                       <!-- <label for="resposta<%=qtd%>">Selecione a Resposta :</label> -->
+                        <select class="custom-select" name="respostas<%=qtd%>" id="respostas<%=qtd%>"  >
                             <option value=""> Selecione a Resposta Correta:</option>
 
                             <option value="<%= q.getResp1()%>"> <%= q.getResp1()%></option>
@@ -109,7 +109,9 @@
 
             <input type="hidden" name="login" value="<%=session.getAttribute("user.login")%>"/>
             <input type="hidden" name="nome" value="<%= session.getAttribute("user.name")%>"/>
-            <input type="submit" name="enviar" value="Enviar Respostas"/>
+            
+            
+            <input type="submit" class="btn btn-primary" name="enviar" value="Enviar Respostas"/>
 
         </form>
 

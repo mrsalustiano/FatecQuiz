@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -18,19 +18,20 @@ import db.DbListener;
  * @author rlarg
  */
 public class User {
+
     private String login;
     private String name;
     private String role;
-    
-    public static ArrayList<User> getUsers() throws Exception{
+
+    public static ArrayList<User> getUsers() throws Exception {
         ArrayList<User> list = new ArrayList<>();
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.URL);
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM users");
-        while(rs.next()){
+        while (rs.next()) {
             list.add(new User(
-                    rs.getString("login"), 
+                    rs.getString("login"),
                     rs.getString("name"),
                     rs.getString("role")));
         }
@@ -39,8 +40,8 @@ public class User {
         con.close();
         return list;
     }
-    
-    public static User getUser(String login, String password) throws Exception{
+
+    public static User getUser(String login, String password) throws Exception {
         User user = null;
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.URL);
@@ -49,22 +50,22 @@ public class User {
         stmt.setString(1, login);
         stmt.setLong(2, password.hashCode());
         ResultSet rs = stmt.executeQuery();
-        if(rs.next()){
+        if (rs.next()) {
             user = new User(
-                    rs.getString("login"), 
+                    rs.getString("login"),
                     rs.getString("name"),
                     rs.getString("role")
             );
-        }else{
-            
+        } else {
+
         }
         rs.close();
         stmt.close();
         con.close();
         return user;
     }
-    
-    public static void addUser(String login, String name, String role, String password) throws Exception{
+
+    public static void addUser(String login, String name, String role, String password) throws Exception {
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.URL);
         String SQL = "INSERT INTO users(login, name, role, password_hash) VALUES(?,?,?,?)";
@@ -77,8 +78,8 @@ public class User {
         stmt.close();
         con.close();
     }
-    
-    public static void removeUser(String login) throws Exception{
+
+    public static void removeUser(String login) throws Exception {
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.URL);
         String SQL = "DELETE FROM users WHERE login = ?";
@@ -88,8 +89,8 @@ public class User {
         stmt.close();
         con.close();
     }
-    
-    public static void changePassword(String login, String password) throws Exception{
+
+    public static void changePassword(String login, String password) throws Exception {
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.URL);
         String SQL = "UPDATE users SET password_hash=? WHERE login=?";
